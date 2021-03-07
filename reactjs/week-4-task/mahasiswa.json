@@ -1,0 +1,36 @@
+{
+  "mahasiswa": [
+    {
+      "id": "2",
+      "nim": "1790750120",
+      "nama": "Cinthya",
+      "alamat": "Jl. Mangga No. 2, Malang",
+      "angkatan": "2017",
+      "status": "Lulus"
+    },
+    {
+      "id": "3",
+      "nim": "1690750130",
+      "nama": "Dani",
+      "alamat": "Jl. Semangka No. 3, Malang",
+      "angkatan": "2016",
+      "status": "Lulus"
+    },
+    {
+      "id": "4",
+      "nim": "1890750140",
+      "nama": "Erik",
+      "alamat": "Jl. Melon No. 4, Malang",
+      "angkatan": "2018",
+      "status": "Aktif"
+    },
+    {
+      "id": 1615134437981,
+      "nim": "10000000",
+      "nama": "Nama Baru",
+      "alamat": "Alamat Baru",
+      "angkatan": "2025",
+      "status": "Aktif"
+    }
+  ]
+}
