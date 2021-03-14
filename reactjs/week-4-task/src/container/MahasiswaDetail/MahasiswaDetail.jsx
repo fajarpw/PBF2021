@@ -57,7 +57,7 @@ class DetailMahasiswa extends Component {
         this.getMahasiswaData()
     }
 
-    hapusMahasiswa(data) {
+    hapusMahasiswa = (data) => {
         fetch('http://localhost:3001/mahasiswa/' + data, { method: 'DELETE' })
             .then(Response => {
                 this.getMahasiswaData()
