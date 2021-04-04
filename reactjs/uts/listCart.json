@@ -1,0 +1,13 @@
+{
+  "cart": [
+    {
+      "id": 1,
+      "namaBarang": "WF17N Front Load with AddWash 17 Kg",
+      "gambarBarang": "https://images.samsung.com/is/image/samsung/id-washer-wf17n7510kv-wf17n7510kv-se-frontblack-205319119?$684_547_PNG$",
+      "jumlahBarang": 1,
+      "stokBarang": 3,
+      "totalHarga": 1650000,
+      "hargaBarang": 1650000
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+    "produk": [
+        {
+            "id": 1,
+            "nama": "WF17N Front Load with AddWash 17 Kg",
+            "harga": 1650000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-washer-wf17n7510kv-wf17n7510kv-se-frontblack-205319119?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 2,
+            "nama": "WW65J Front Load, Diamond Drum 6.5 Kg",
+            "harga": 4099000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-washer-ww65j3033lw-ww65j3033lw-se-frontwhite-69089555?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 3,
+            "nama": "WW90J Front Load, Steam 9 Kg",
+            "harga": 5000000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-ww90j54e0bwse-ww90j54e0bw-se-frontwhite-118974141?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 4,
+            "nama": "WW70J Front Load, Steam 7 Kg",
+            "harga": 4249000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-washer-ww70j42g0kw-ww70j42g0kw-se-frontwhite-119563241?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 5,
+            "nama": "WW10K Front Load, AddWash 10 Kg",
+            "harga": 11000000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-washer-ww10k6410qw-ww10k6410qw-se-001-front-white?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 6,
+            "nama": "WA11 Top Load Wobble™ Technology 11 Kg",
+            "harga": 4799000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-top-loader-wa11t5260bv-wa11t5260bv-se-frontblack-251824380?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 7,
+            "nama": "WA13 Top Load Wobble™ Technology 13 Kg",
+            "harga": 4999000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-top-loader-wa13t5260bv-wa13t5260bv-se-frontblack-251824324?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 8,
+            "nama": "WA16 Top Load Wobble™ Technology 16 Kg",
+            "harga": 7899000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-top-loader-wa16n6780cv-wa16n6780cv-se-frontblack-119563302?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 9,
+            "nama": "WA80 Top Load Wobble™ Technology 8 Kg",
+            "harga": 2950000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-top-loader-wa80h4200sw-wa80h4200sw-se-frontwhite-119589227?$684_547_PNG$",
+            "stok": 3
+        },
+        {
+            "id": 10,
+            "nama": "WA70 Top Load Wobble™ Technology 7 Kg",
+            "harga": 2599000,
+            "gambar": "https://images.samsung.com/is/image/samsung/id-top-loader-wa70h4200sw-wa70h4200sw-se-frontwhite-119589491?$684_547_PNG$",
+            "stok": 3
+        }
+    ]
+}

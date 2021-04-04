@@ -1,0 +1,20 @@
+{
+  "cart": [
+    {
+      "id": 1,
+      "namaBarang": "(Nama Barang)",
+      "gambarBarang": "(gambar barang)",
+      "jumlahBarang": 0,
+      "totalHarga": 0,
+      "tanggalPembelian": "(tanggal pembelian)"
+    },
+    {
+      "id": 2,
+      "namaBarang": "(Nama Barang)",
+      "gambarBarang": "(gambar barang)",
+      "jumlahBarang": 0,
+      "totalHarga": 0,
+      "tanggalPembelian": "(tanggal pembelian)"
+    }
+  ]
+}

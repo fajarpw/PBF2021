@@ -60,7 +60,7 @@ class Table extends Component {
                                     </td>
                                     <td>
                                         <button
-                                            className="btn btn-outline-success"
+                                            className="btn btn-outline-danger"
                                             onClick={() => this.props.deleteTodo(todo.id)}
                                             style={{
                                                 marginRight: "20px"
@@ -68,9 +68,9 @@ class Table extends Component {
                                         >Delete</button>
 
                                         <button
-                                            className="btn btn-outline-danger"
+                                            className="btn btn-outline-success"
                                             onClick={() => this.props.toggleTodo(todo.id)}
-                                        >Toggle</button>
+                                        >Mark as Completed</button>
 
                                         <span
                                             className="fas fa-minus-circle"
