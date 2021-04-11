@@ -5,7 +5,6 @@ import MyLogo2 from '../image/logo_textonly.png'
 function MyTitle() {
     return (
         <div className='my-title'>
-
             <img className="logo2" src={MyLogo2} alt="logo" />
         </div>
     )
