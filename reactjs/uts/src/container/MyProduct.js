@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Product from '../components/Product'
-
 import Alert from 'react-bootstrap/Alert'
 
 class MyProduct extends Component {
