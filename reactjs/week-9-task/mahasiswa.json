@@ -1,14 +1,6 @@
 {
   "mahasiswa": [
     {
-      "id": "2",
-      "nim": "1790750120",
-      "nama": "Cinthya",
-      "alamat": "Jl. Mangga No. 2, Malang",
-      "angkatan": "2017",
-      "status": "Lulus"
-    },
-    {
       "id": "3",
       "nim": "1690750130",
       "nama": "Dani",
@@ -25,11 +17,11 @@
       "status": "Aktif"
     },
     {
-      "id": 1618133759954,
-      "nim": "1841720999",
-      "nama": "Nama baru",
-      "alamat": "Alamat Baru",
-      "angkatan": "2012",
+      "id": 1618133950029,
+      "nim": "1841720777",
+      "nama": "Eugene Krab",
+      "alamat": "Bikini Bottom",
+      "angkatan": "1999",
       "status": "Lulus"
     }
   ]
