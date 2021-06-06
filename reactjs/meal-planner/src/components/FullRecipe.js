@@ -47,41 +47,7 @@ export default function FullRecipe(recipeID) {
     <Container disableGutters>
       <Header />
       <Grid container spacing={2} justify="center">
-        {detailMealData.map((recipeInfo) => (
-          <>
-            <Grid item>
-              <Card className={classes.root}>
-                <CardMedia
-                  className={classes.media}
-                  image={detailMealData.image}
-                  title="Image Title"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {detailMealData.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Add to Favourite
-                  </Button>
-                  <Button size="small" color="primary">
-                    Full Recipe
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          </>
-        ))}
+        {/* disini */}
       </Grid>
       <Footer />
     </Container>

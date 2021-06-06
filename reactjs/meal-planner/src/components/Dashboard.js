@@ -82,7 +82,8 @@ export default function Dashboard() {
     fetch(
       //`https://jsonplaceholder.typicode.com/posts`
       //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
-      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+      //`https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=apple&number=3`
     )
       .then((response) => response.json())
       .then((randomData) => {
@@ -236,7 +237,7 @@ export default function Dashboard() {
                 GET INSPIRED BY OUR RECIPE EVERYDAY
               </h5>
             </Grid>
-            {randomMealData.recipes.map((randomRecipe) => (
+            {randomMealData.results.map((randomRecipe) => (
               <Grid item key={randomRecipe.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
