@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -44,13 +44,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3];
 
 export default function Dashboard() {
   const classes = useStyles();
-
+  const [randomMealData, setRandomMealData] = useState([]);
   const [mealData, setMealData] = useState(null);
-  const [randomMData, setRandomMealData] = useState(null);
   const [calories, setCalories] = useState(0);
   const [query, setQuery] = useState("");
 
@@ -65,7 +64,8 @@ export default function Dashboard() {
   function getMealData() {
     fetch(
       //`https://api.spoonacular.com/mealplanner/generate/?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&timeFrame=day&targetCalories=${calories}`
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&query=${query}&minCalories=${calories}`
+      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&query=${query}&minCalories=${calories}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=${query}&minCalories=${calories}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -76,6 +76,33 @@ export default function Dashboard() {
         console.log("Error");
       });
   }
+
+  function getRandomMeal() {
+    fetch(
+      `https://jsonplaceholder.typicode.com/posts`
+      //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
+      //`https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+    )
+      .then((response) => response.json())
+      .then((randomData) => {
+        setRandomMealData(randomData);
+        console.log(randomData);
+      })
+      .catch(() => {
+        console.log("Error");
+      });
+  }
+
+  function goToFullRecipe() {
+    const url = "full-recipe";
+    window.open(url, "_blank");
+  }
+
+  useEffect(() => {
+    getRandomMeal();
+  }, []);
+
+  const test = [1, 2, 3];
   return (
     <React.Fragment>
       <CssBaseline />
@@ -120,7 +147,6 @@ export default function Dashboard() {
             </div>
           </Container>
         </div>
-
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             <Grid item xs="6">
@@ -161,8 +187,56 @@ export default function Dashboard() {
                 Get Meal
               </Button>
             </Grid>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {mealData ? (
+              <>
+                {mealData.results.map((recipe) => (
+                  <Grid item key={recipe.id} xs={12} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={recipe.image}
+                        title="Image title"
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {recipe.title}
+                        </Typography>
+                        {/* <Typography>Deskripsi</Typography> */}
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          href="full-recipe"
+                          onClick={goToFullRecipe}
+                        >
+                          See full recipe
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </>
+            ) : (
+              <>
+                <Grid item xs="12">
+                  <h6 style={{ textAlign: "center" }}>
+                    No search results found.
+                  </h6>
+                  <p style={{ textAlign: "center" }}>
+                    You can start searching by entering the name or calorie of
+                    the recipe.
+                  </p>
+                </Grid>
+              </>
+            )}
+            <Grid item xs="12">
+              <h5 style={{ textAlign: "center" }}>
+                GET INSPIRED BY OUR RECIPE EVERYDAY
+              </h5>
+            </Grid>
+            {randomMealData.map((randomRecipe) => (
+              <Grid item key={randomRecipe.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -171,16 +245,17 @@ export default function Dashboard() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {randomRecipe.title}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
+                    {/* <Typography>Deskripsi resep</Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      Recipe
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={goToFullRecipe}
+                    >
+                      See Full Recipe
                     </Button>
                   </CardActions>
                 </Card>

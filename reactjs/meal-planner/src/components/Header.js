@@ -28,7 +28,6 @@ export default function Header() {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
       history.push("/login");
@@ -54,15 +53,25 @@ export default function Header() {
               NUTRIVIX
             </Link>
           </Typography>
-          <Button color="inherit" href="update-profile">
-            My Favourite
-          </Button>
-          <Button color="inherit" href="update-profile">
-            Profile
-          </Button>
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
+          {currentUser ? (
+            <>
+              <Button color="inherit" href="favourite">
+                My Favourite
+              </Button>
+              <Button color="inherit" href="update-profile">
+                {currentUser && currentUser.email}
+              </Button>
+              <Button color="inherit" onClick={handleLogout}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button color="inherit" href="login">
+                Login
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </div>
