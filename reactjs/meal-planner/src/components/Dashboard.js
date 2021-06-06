@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,9 +80,9 @@ export default function Dashboard() {
 
   function getRandomMeal() {
     fetch(
-      `https://jsonplaceholder.typicode.com/posts`
+      //`https://jsonplaceholder.typicode.com/posts`
       //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
-      //`https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
     )
       .then((response) => response.json())
       .then((randomData) => {
@@ -93,8 +94,8 @@ export default function Dashboard() {
       });
   }
 
-  function goToFullRecipe() {
-    const url = "full-recipe";
+  function goToFullRecipe(recipeID) {
+    const url = "full-recipe/" + recipeID;
     window.open(url, "_blank");
   }
 
@@ -208,7 +209,7 @@ export default function Dashboard() {
                           size="small"
                           color="primary"
                           href="full-recipe"
-                          onClick={goToFullRecipe}
+                          onClick={() => goToFullRecipe(recipe.id)}
                         >
                           See full recipe
                         </Button>
@@ -235,12 +236,12 @@ export default function Dashboard() {
                 GET INSPIRED BY OUR RECIPE EVERYDAY
               </h5>
             </Grid>
-            {randomMealData.map((randomRecipe) => (
+            {randomMealData.recipes.map((randomRecipe) => (
               <Grid item key={randomRecipe.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={randomRecipe.image}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
@@ -253,7 +254,7 @@ export default function Dashboard() {
                     <Button
                       size="small"
                       color="primary"
-                      onClick={goToFullRecipe}
+                      onClick={() => goToFullRecipe(randomRecipe.id)}
                     >
                       See Full Recipe
                     </Button>

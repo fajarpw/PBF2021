@@ -21,7 +21,7 @@ function App() {
           <PrivateRoute path="/favourite" component={Favourite} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/full-recipe" component={FullRecipe} />
+          <Route path="/full-recipe/:recipeID" component={FullRecipe} />
           <Route path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </AuthProvider>
