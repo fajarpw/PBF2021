@@ -1,6 +1,5 @@
 import React from "react";
 import Signup from "./SignUp";
-import Container from "@material-ui/core/Container";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";

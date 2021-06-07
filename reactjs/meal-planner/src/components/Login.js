@@ -4,17 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Avatar,
   Button,
   TextField,
   Grid,
-  Box,
   Container,
   Typography,
 } from "@material-ui/core/";
 // import Link from '@material-ui/core/Link';
 import Alert from "@material-ui/lab/Alert";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Header from "./Header";
 import Footer from "./Footer";
 

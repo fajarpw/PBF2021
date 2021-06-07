@@ -4,17 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
-  Avatar,
   Button,
   TextField,
   Grid,
-  Box,
   Typography,
   Container,
 } from "@material-ui/core/";
 // import Link from "@material-ui/core/Link";
 import Alert from "@material-ui/lab/Alert";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -74,9 +71,6 @@ export default function Signup() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          {/* <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar> */}
           <Typography component="h1" variant="h5">
             NUTRIVIX
             <hr></hr>

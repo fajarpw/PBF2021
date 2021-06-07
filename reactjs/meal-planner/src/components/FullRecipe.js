@@ -10,6 +10,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Container, Grid } from "@material-ui/core";
 import { useParams } from "react-router";
+import app from "../firebase";
+import firebase from "firebase";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 750,
@@ -24,6 +27,9 @@ export default function FullRecipe(recipeID) {
   const classes = useStyles();
   const id = useParams();
   const [detailMealData, setDetailMealData] = useState([]);
+  const [recipeFavourite, setRecipeFavourite] = useState([]);
+
+  let fid, ftitle, fimage, furl, fsummary;
 
   function getFullRecipeInfo({ recipeID }) {
     const url = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=79d97ba478aa49179f66679cec14d16d&includeNutrition=false`;
@@ -42,12 +48,17 @@ export default function FullRecipe(recipeID) {
     getFullRecipeInfo(id);
   }, []);
 
+  const addToFavourite = () => {
+    const recipeRef = app.database().ref("test");
+    recipeRef.push(detailMealData);
+  };
+
   return (
     <Container disableGutters>
       <Header />
       <Grid container spacing={2} justify="center">
         {detailMealData &&
-          Object.keys(detailMealData).map((item, i) => (
+          Object.keys(detailMealData).map((item, i = 1) => (
             <>
               <Grid item key={detailMealData["id"]}>
                 <Card className={classes.root}>
@@ -69,7 +80,11 @@ export default function FullRecipe(recipeID) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={addToFavourite}
+                    >
                       Add to Favourite
                     </Button>
                     <Button
@@ -81,7 +96,6 @@ export default function FullRecipe(recipeID) {
                           "_blank"
                         );
                       }}
-                      // href={detailMealData["sourceUrl"]}
                     >
                       Full Recipe
                     </Button>

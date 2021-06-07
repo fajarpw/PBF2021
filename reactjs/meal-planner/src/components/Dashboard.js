@@ -83,7 +83,7 @@ export default function Dashboard() {
     fetch(
       //`https://jsonplaceholder.typicode.com/posts`
       //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
-      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=3`
       //`https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=apple&number=3`
     )
       .then((response) => response.json())
@@ -138,12 +138,12 @@ export default function Dashboard() {
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
-                    Main call to action
+                    Github
                   </Button>
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
-                    Secondary action
+                    GDrive
                   </Button>
                 </Grid>
               </Grid>
@@ -214,7 +214,7 @@ export default function Dashboard() {
                             href="full-recipe"
                             onClick={() => goToFullRecipe(recipe.id)}
                           >
-                            See full recipe
+                            See details
                           </Button>
                         </CardActions>
                       </Card>
@@ -262,7 +262,7 @@ export default function Dashboard() {
                             color="primary"
                             onClick={() => goToFullRecipe(randomRecipe.id)}
                           >
-                            See Full Recipe
+                            See details
                           </Button>
                         </CardActions>
                       </Card>
