@@ -26,13 +26,14 @@ const useStyles = makeStyles({
 export default function FullRecipe(recipeID) {
   const classes = useStyles();
   const id = useParams();
-  const [detailMealData, setDetailMealData] = useState([]);
-  const [recipeFavourite, setRecipeFavourite] = useState([]);
+  const [detailMealData, setDetailMealData] = useState();
+  const [recipeFavourite, setRecipeFavourite] = useState();
 
   let fid, ftitle, fimage, furl, fsummary;
 
   function getFullRecipeInfo({ recipeID }) {
-    const url = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=79d97ba478aa49179f66679cec14d16d&includeNutrition=false`;
+    //const url = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=79d97ba478aa49179f66679cec14d16d&includeNutrition=false`;
+    const url = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&includeNutrition=false`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -49,16 +50,25 @@ export default function FullRecipe(recipeID) {
   }, []);
 
   const addToFavourite = () => {
+    const recipe = {
+      fid: detailMealData["id"],
+      ftitle: detailMealData["title"],
+      fimage: detailMealData["image"],
+      fisummary: detailMealData["summary"],
+      furl: detailMealData["spoonacularSourceUrl"],
+    };
+    console.log(recipe);
     const recipeRef = app.database().ref("test");
-    recipeRef.push(detailMealData);
+    recipeRef.push(recipe);
   };
-
   return (
     <Container disableGutters>
       <Header />
       <Grid container spacing={2} justify="center">
-        {detailMealData &&
-          Object.keys(detailMealData).map((item, i = 1) => (
+        {
+          detailMealData && (
+            // &&
+            //   Object.keys(detailMealData).map(() => (
             <>
               <Grid item key={detailMealData["id"]}>
                 <Card className={classes.root}>
@@ -103,7 +113,9 @@ export default function FullRecipe(recipeID) {
                 </Card>
               </Grid>
             </>
-          ))}
+          )
+          // ))
+        }
       </Grid>
       <Footer />
     </Container>

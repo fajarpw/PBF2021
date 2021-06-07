@@ -65,9 +65,8 @@ export default function Dashboard() {
 
   function getMealData() {
     fetch(
-      //`https://api.spoonacular.com/mealplanner/generate/?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&timeFrame=day&targetCalories=${calories}`
-      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&query=${query}&minCalories=${calories}`
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=${query}&minCalories=${calories}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&query=${query}&minCalories=${calories}`
+      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=${query}&minCalories=${calories}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -81,10 +80,8 @@ export default function Dashboard() {
 
   function getRandomMeal() {
     fetch(
-      //`https://jsonplaceholder.typicode.com/posts`
-      //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
-      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=3`
-      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=apple&number=3`
+      `https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=3`
+      //`https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=3`
     )
       .then((response) => response.json())
       .then((randomData) => {
