@@ -53,6 +53,7 @@ export default function Dashboard() {
   const [mealData, setMealData] = useState(null);
   const [calories, setCalories] = useState(0);
   const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
 
   function handleChangeCalorie(e) {
     setCalories(e.target.value);
@@ -82,8 +83,8 @@ export default function Dashboard() {
     fetch(
       //`https://jsonplaceholder.typicode.com/posts`
       //`https://api.spoonacular.com/recipes/random?apiKey=fdcbbbb7109049a89e0e44ac2778b54d&number=1`
-      //`https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=apple&number=3`
+      `https://api.spoonacular.com/recipes/random?apiKey=79d97ba478aa49179f66679cec14d16d&number=1`
+      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=79d97ba478aa49179f66679cec14d16d&query=apple&number=3`
     )
       .then((response) => response.json())
       .then((randomData) => {
@@ -191,33 +192,34 @@ export default function Dashboard() {
             </Grid>
             {mealData ? (
               <>
-                {mealData.results.map((recipe) => (
-                  <Grid item key={recipe.id} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={recipe.image}
-                        title="Image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {recipe.title}
-                        </Typography>
-                        {/* <Typography>Deskripsi</Typography> */}
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          size="small"
-                          color="primary"
-                          href="full-recipe"
-                          onClick={() => goToFullRecipe(recipe.id)}
-                        >
-                          See full recipe
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
+                {mealData.results &&
+                  mealData.results.map((recipe) => (
+                    <Grid item key={recipe.id} xs={12} sm={6} md={4}>
+                      <Card className={classes.card}>
+                        <CardMedia
+                          className={classes.cardMedia}
+                          image={recipe.image}
+                          title="Image title"
+                        />
+                        <CardContent className={classes.cardContent}>
+                          <Typography gutterBottom variant="h5" component="h2">
+                            {recipe.title}
+                          </Typography>
+                          {/* <Typography>Deskripsi</Typography> */}
+                        </CardContent>
+                        <CardActions>
+                          <Button
+                            size="small"
+                            color="primary"
+                            href="full-recipe"
+                            onClick={() => goToFullRecipe(recipe.id)}
+                          >
+                            See full recipe
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  ))}
               </>
             ) : (
               <>
@@ -237,32 +239,41 @@ export default function Dashboard() {
                 GET INSPIRED BY OUR RECIPE EVERYDAY
               </h5>
             </Grid>
-            {randomMealData.results.map((randomRecipe) => (
-              <Grid item key={randomRecipe.id} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={randomRecipe.image}
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {randomRecipe.title}
-                    </Typography>
-                    {/* <Typography>Deskripsi resep</Typography> */}
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      onClick={() => goToFullRecipe(randomRecipe.id)}
-                    >
-                      See Full Recipe
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {randomMealData ? (
+              <>
+                {randomMealData.recipes &&
+                  randomMealData.recipes.map((randomRecipe) => (
+                    <Grid item key={randomRecipe.id} xs={12} sm={6} md={4}>
+                      <Card className={classes.card}>
+                        <CardMedia
+                          className={classes.cardMedia}
+                          image={randomRecipe.image}
+                          title="Image title"
+                        />
+                        <CardContent className={classes.cardContent}>
+                          <Typography gutterBottom variant="h5" component="h2">
+                            {randomRecipe.title}
+                          </Typography>
+                          {/* <Typography>Deskripsi resep</Typography> */}
+                        </CardContent>
+                        <CardActions>
+                          <Button
+                            size="small"
+                            color="primary"
+                            onClick={() => goToFullRecipe(randomRecipe.id)}
+                          >
+                            See Full Recipe
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  ))}
+              </>
+            ) : (
+              <>
+                <p>Nothing to show</p>
+              </>
+            )}
           </Grid>
         </Container>
       </main>

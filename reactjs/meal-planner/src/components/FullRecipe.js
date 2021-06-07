@@ -3,14 +3,12 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Container, Grid } from "@material-ui/core";
-import { sizing } from "@material-ui/system";
 import { useParams } from "react-router";
 const useStyles = makeStyles({
   root: {
@@ -43,11 +41,55 @@ export default function FullRecipe(recipeID) {
   useEffect(() => {
     getFullRecipeInfo(id);
   }, []);
+
   return (
     <Container disableGutters>
       <Header />
       <Grid container spacing={2} justify="center">
-        {/* disini */}
+        {detailMealData &&
+          Object.keys(detailMealData).map((item, i) => (
+            <>
+              <Grid item key={detailMealData["id"]}>
+                <Card className={classes.root}>
+                  <CardMedia
+                    className={classes.media}
+                    image={detailMealData["image"]}
+                    title="Image Title"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {detailMealData["title"]}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {detailMealData["summary"]}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Add to Favourite
+                    </Button>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => {
+                        window.open(
+                          detailMealData["spoonacularSourceUrl"],
+                          "_blank"
+                        );
+                      }}
+                      // href={detailMealData["sourceUrl"]}
+                    >
+                      Full Recipe
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            </>
+          ))}
       </Grid>
       <Footer />
     </Container>
