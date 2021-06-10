@@ -1,8 +1,9 @@
-/*------- index.js ---------*/
+/* ------------- index.js -------------- */
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
-import AddStudents from "./AddStudents";
+import { Table, Button } from "react-bootstrap/";
 import axios from "axios";
+import AddStudents from "./AddStudents";
+import EditStudent from "./EditStudents";
 
 export default class Student extends Component {
   constructor(props) {
@@ -18,6 +19,15 @@ export default class Student extends Component {
       isLoading: false,
       status: "",
       newStudentModal: false,
+      editStudentData: {
+        id: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+      },
+      editStudentModal: false,
+      noDataFound: "",
     };
   }
   componentDidMount() {
@@ -75,8 +85,70 @@ export default class Student extends Component {
         );
       });
   };
+  toggleEditStudentModal = () => {
+    this.setState({
+      editStudentModal: !this.state.editStudentModal,
+    });
+  };
+  onChangeEditStudentHanler = (e) => {
+    let { editStudentData } = this.state;
+    editStudentData[e.target.name] = e.target.value;
+    this.setState({ editStudentData });
+  };
+  editStudent = (id, first_name, last_name, email, phone) => {
+    this.setState({
+      editStudentData: { id, first_name, last_name, email, phone },
+      editStudentModal: !this.state.editStudentModal,
+    });
+  };
+  updateStudent = () => {
+    let { id, first_name, last_name, email, phone } =
+      this.state.editStudentData;
+    this.setState({
+      isLoading: true,
+    });
+    axios
+      .post("http://localhost:8000/api/create-student", {
+        first_name,
+        last_name,
+        email,
+        phone,
+        id,
+      })
+      .then((response) => {
+        this.getStudents();
+        this.setState({
+          editStudentModal: false,
+          editStudentData: { first_name, last_name, email, phone },
+          isLoading: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        console.log(error.response);
+      });
+  };
+  deletStudent = (id) => {
+    this.setState({
+      isLoading: true,
+    });
+    axios
+      .delete("http://localhost:8000/api/student/" + id)
+      .then((response) => {
+        this.setState({
+          isLoading: false,
+        });
+        this.getStudents();
+      })
+      .catch((error) => {
+        this.setState({
+          isLoading: false,
+        });
+      });
+  };
   render() {
-    const { newStudentData, noDataFound, students } = this.state;
+    const { newStudentData, editStudentData, noDataFound, students } =
+      this.state;
     let studentsDetails = [];
     if (students.length) {
       studentsDetails = students.map((student) => {
@@ -89,10 +161,27 @@ export default class Student extends Component {
             <td>{student.email}</td>
             <td>{student.phone}</td>
             <td>
-              <Button color="success" className="mr-3" size="sm">
+              <Button
+                color="success"
+                className="mr-3"
+                size="sm"
+                onClick={() =>
+                  this.editStudent(
+                    student.id,
+                    student.first_name,
+                    student.last_name,
+                    student.email,
+                    student.phone
+                  )
+                }
+              >
                 Edit
               </Button>
-              <Button color="danger" size="sm">
+              <Button
+                color="danger"
+                size="sm"
+                onClick={() => this.deletStudent(student.id)}
+              >
                 Delete
               </Button>
             </td>
@@ -110,12 +199,22 @@ export default class Student extends Component {
     return (
       <div className="App container mt-4">
         <h4 className="font-weight-bold">Students Registration</h4>
+        {/* Model for Add Studnet Record */}
         <AddStudents
           toggleNewStudentModal={this.toggleNewStudentModal}
           newStudentModal={this.state.newStudentModal}
           onChangeAddStudentHandler={this.onChangeAddStudentHandler}
           addStudent={this.addStudent}
           newStudentData={newStudentData}
+        />
+        {/* Model for Edit Studnet Record */}
+        <EditStudent
+          toggleEditStudentModal={this.toggleEditStudentModal}
+          editStudentModal={this.state.editStudentModal}
+          onChangeEditStudentHanler={this.onChangeEditStudentHanler}
+          editStudent={this.editStudent}
+          editStudentData={editStudentData}
+          updateStudent={this.updateStudent}
         />
         <Table>
           <thead>

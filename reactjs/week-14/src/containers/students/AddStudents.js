@@ -2,6 +2,14 @@
 import React, { Component } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
+<AddStudents
+  toggleNewStudentModal={this.toggleNewStudentModal}
+  newStudentModal={this.state.newStudentModal}
+  onChangeAddStudentHandler={this.onChangeAddStudentHandler}
+  addStudent={this.addStudent}
+  newStudentData={newStudentData}
+/>;
+
 export default class AddStudents extends Component {
   render() {
     return (

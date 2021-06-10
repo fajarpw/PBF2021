@@ -134,12 +134,20 @@ export default function Dashboard() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href="https://github.com/fajarpw/PBF2021"
+                  >
                     Github
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    href="https://drive.google.com/drive/folders/1N4b5JaQkI_hyRK8twjTWhgdpem2-fc1p?usp=sharing"
+                  >
                     GDrive
                   </Button>
                 </Grid>

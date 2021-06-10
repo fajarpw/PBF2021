@@ -55,10 +55,10 @@ export default function Header() {
           </Typography>
           {currentUser ? (
             <>
-              <Button color="inherit" href="favourite">
+              <Button color="inherit" href="/favourite">
                 My Favourite
               </Button>
-              <Button color="inherit" href="update-profile">
+              <Button color="inherit" href="/update-profile">
                 {currentUser && currentUser.email}
               </Button>
               <Button color="inherit" onClick={handleLogout}>
